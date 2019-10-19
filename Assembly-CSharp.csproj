@@ -65,8 +65,10 @@
     <Compile Include="Assets\_Scripts\Boundary.cs" />
     <Compile Include="Assets\_Scripts\CloudController.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
-    <Compile Include="Assets\_Scripts\HighScore.cs" />
     <Compile Include="Assets\_Scripts\IslandController.cs" />
+    <Compile Include="Assets\_Scripts\lives and scores\HighScore.cs" />
+    <Compile Include="Assets\_Scripts\lives and scores\Lives.cs" />
+    <Compile Include="Assets\_Scripts\lives and scores\Score.cs" />
     <Compile Include="Assets\_Scripts\OceanController.cs" />
     <Compile Include="Assets\_Scripts\PlayerController.cs" />
     <Compile Include="Assets\_Scripts\SoundClip.cs" />

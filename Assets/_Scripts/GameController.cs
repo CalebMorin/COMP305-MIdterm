@@ -4,6 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+/// GameController
+/// Author: Tom Tsiliopoulos
+/// Edited by: Caleb Morin (301012814)
+/// Last Modified: Oct 19th 9:30~
+/// 
+/// Handles all the Sounds and Scores and Scenes and Stuff
+/// 
+/// Also the UI but that doesnt start with an S
+/// 
+/// Fun fact: I made a different error on the word 'midterm' on the game files AND the githum repo! Neither are correct!
+/// 
+/// GameController
+
+
+
 public class GameController : MonoBehaviour
 {
     [Header("Scene Game Objects")]
@@ -72,15 +88,16 @@ public class GameController : MonoBehaviour
 
             
 
-            if (highScore.GetComponent<HighScore>().score < _score)
+            if (highScore.GetComponent<HighScore>().highestScore < _score)
             {
-                highScore.GetComponent<HighScore>().score = _score;
+                highScore.GetComponent<HighScore>().highestScore = _score;
             }
             scoreLabel.text = "Score: " + _score.ToString();
         }
     }
 
-    // Start is called before the first frame update
+   
+
     void Start()
     {
         GameObjectInitialization();
@@ -90,7 +107,6 @@ public class GameController : MonoBehaviour
     private void GameObjectInitialization()
     {
         highScore = GameObject.Find("HighScore");
-
         startLabel = GameObject.Find("StartLabel");
         endLabel = GameObject.Find("EndLabel");
         startButton = GameObject.Find("StartButton");
@@ -119,18 +135,27 @@ public class GameController : MonoBehaviour
                 restartButton.SetActive(false);
                 activeSoundClip = SoundClip.ENGINE;
                 break;
+            case "LevelTwo":
+                highScoreLabel.enabled = false;
+                startLabel.SetActive(false);
+                startButton.SetActive(false);
+                endLabel.SetActive(false);
+                restartButton.SetActive(false);
+                activeSoundClip = SoundClip.ENGINE;
+                Debug.Log("Level two");
+                break;
             case "End":
                 scoreLabel.enabled = false;
                 livesLabel.enabled = false;
                 startLabel.SetActive(false);
                 startButton.SetActive(false);
                 activeSoundClip = SoundClip.NONE;
-                highScoreLabel.text = "High Score: " + highScore.GetComponent<HighScore>().score;
+                highScoreLabel.text = "High Score: " + highScore.GetComponent<HighScore>().highestScore;
                 break;
         }
 
         Lives = 5;
-        Score = 0;
+        Score = highScore.GetComponent<HighScore>().score;
 
 
         if ((activeSoundClip != SoundClip.NONE) && (activeSoundClip != SoundClip.NUM_OF_CLIPS))
@@ -151,17 +176,23 @@ public class GameController : MonoBehaviour
         {
             clouds.Add(Instantiate(cloud));
         }
-
+         
         Instantiate(island);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Event Handlers
+    public void CheckScore()
     {
-        
+        Debug.Log("Checking Score...");
+        if(Score == 100)
+        {
+            highScore.GetComponent<HighScore>().score = Score;
+            highScore.GetComponent<HighScore>().lives = Lives;
+            DontDestroyOnLoad(highScore);
+            SceneManager.LoadScene("LevelTwo");
+        }
     }
 
-    // Event Handlers
     public void OnStartButtonClick()
     {
         DontDestroyOnLoad(highScore);

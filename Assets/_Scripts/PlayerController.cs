@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
             case "Island":
                 _yaySound.Play();
                 gameController.Score += 100;
+                gameController.CheckScore();
                 break;
         }
     }
