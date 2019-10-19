@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 /// GameController
 /// Author: Tom Tsiliopoulos
 /// Edited by: Caleb Morin (301012814)
-/// Last Modified: Oct 19th 9:30~
+/// Last Modified: Oct 19th 10:30~
 /// 
 /// Handles all the Sounds and Scores and Scenes and Stuff
 /// 
 /// Also the UI but that doesnt start with an S
 /// 
-/// Fun fact: I made a different error on the word 'midterm' on the game files AND the githum repo! Neither are correct!
+/// Fun fact: I made a different error on the word 'midterm' on the game files AND the githum repo! Neither are correct and I can't change them!
 /// 
 /// GameController
 
@@ -163,7 +163,7 @@ public class GameController : MonoBehaviour
             AudioSource activeAudioSource = audioSources[(int)activeSoundClip];
             activeAudioSource.playOnAwake = true;
             activeAudioSource.loop = true;
-            activeAudioSource.volume = 0.5f;
+            activeAudioSource.volume = 5f;
             activeAudioSource.Play();
         }
 
@@ -184,10 +184,9 @@ public class GameController : MonoBehaviour
     public void CheckScore()
     {
         Debug.Log("Checking Score...");
-        if(Score == 100)
+        if(Score == 500)
         {
             highScore.GetComponent<HighScore>().score = Score;
-            highScore.GetComponent<HighScore>().lives = Lives;
             DontDestroyOnLoad(highScore);
             SceneManager.LoadScene("LevelTwo");
         }

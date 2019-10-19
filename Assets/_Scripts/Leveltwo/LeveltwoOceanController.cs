@@ -1,27 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Util;
 
-public class CloudController : MonoBehaviour
+public class LeveltwoOceanController : MonoBehaviour
 {
-    [Header("Speed Values")]
-    [SerializeField]
-    public Speed horizontalSpeedRange;
-
-    [SerializeField]
-    public Speed verticalSpeedRange;
-
-    public float verticalSpeed;
-    public float horizontalSpeed;
-
-    [SerializeField]
-    public Boundary boundary;
+    public float horizontalSpeed = 0.1f;
+    public float resetPosition = 4.8f;
+    public float resetPoint = -4.8f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Reset();
+        //Reset();
     }
 
     // Update is called once per frame
@@ -36,7 +26,7 @@ public class CloudController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        Vector2 newPosition = new Vector2(horizontalSpeed, verticalSpeed);
+        Vector2 newPosition = new Vector2(horizontalSpeed, -0.0f);
         Vector2 currentPosition = transform.position;
 
         currentPosition -= newPosition;
@@ -48,11 +38,7 @@ public class CloudController : MonoBehaviour
     /// </summary>
     void Reset()
     {
-        horizontalSpeed = Random.Range(horizontalSpeedRange.min, horizontalSpeedRange.max);
-        verticalSpeed = Random.Range(verticalSpeedRange.min, verticalSpeedRange.max);
-
-        float randomXPosition = Random.Range(boundary.Left, boundary.Right);
-        transform.position = new Vector2(randomXPosition, Random.Range(boundary.Top, boundary.Top + 2.0f));
+        transform.position = new Vector2(resetPosition, -0.8f);
     }
 
     /// <summary>
@@ -61,13 +47,9 @@ public class CloudController : MonoBehaviour
     /// </summary>
     void CheckBounds()
     {
-        if (transform.position.y <= boundary.Bottom)
+        if (transform.position.x <= resetPoint)
         {
             Reset();
         }
-    }
-    void CheckLevel()
-    {
-
     }
 }
