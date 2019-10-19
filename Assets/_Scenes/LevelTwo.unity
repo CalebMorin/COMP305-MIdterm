@@ -837,6 +837,18 @@ PrefabInstance:
       propertyPath: numberOfClouds
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6258031004218500820, guid: 0cd6714592b08874d95701663d2115fa,
+        type: 3}
+      propertyPath: cloud
+      value: 
+      objectReference: {fileID: 917096652120306648, guid: f8e14f85d5962e7459d24f1477e35067,
+        type: 3}
+    - target: {fileID: 6258031004218500820, guid: 0cd6714592b08874d95701663d2115fa,
+        type: 3}
+      propertyPath: island
+      value: 
+      objectReference: {fileID: 2614522942666080542, guid: 0195cb1ecdceb9e4081503bab98177fa,
+        type: 3}
     - target: {fileID: 6258031004218500823, guid: 0cd6714592b08874d95701663d2115fa,
         type: 3}
       propertyPath: m_LocalPosition.x

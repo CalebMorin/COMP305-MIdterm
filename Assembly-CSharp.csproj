@@ -67,6 +67,8 @@
     <Compile Include="Assets\_Scripts\GameController.cs" />
     <Compile Include="Assets\_Scripts\HighScore.cs" />
     <Compile Include="Assets\_Scripts\IslandController.cs" />
+    <Compile Include="Assets\_Scripts\Leveltwo\CloudControllerLevelTwo.cs" />
+    <Compile Include="Assets\_Scripts\Leveltwo\IslandControllerLevelTwo.cs" />
     <Compile Include="Assets\_Scripts\Leveltwo\LeveltwoOceanController.cs" />
     <Compile Include="Assets\_Scripts\Leveltwo\PlayerControllerLeveltwo.cs" />
     <Compile Include="Assets\_Scripts\OceanController.cs" />
